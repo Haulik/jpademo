@@ -33,4 +33,12 @@ public class Recipe {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Notes getNotes() {
+        return notes;
+    }
+
+    public void setNotes(Notes notes) {
+        this.notes = notes;
+    }
 }
