@@ -1,5 +1,6 @@
 package com.example.jpademo.bootstrap;
 
+import com.example.jpademo.model.Ingredient;
 import com.example.jpademo.model.Notes;
 import com.example.jpademo.model.Recipe;
 import com.example.jpademo.repository.RecipeRepository;
@@ -8,6 +9,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,12 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         notes.setNotes("Avocado, hvidløg, citron, spidskommen, creme-freche, slat, peber, tomatskal");
         notes.setRecipe(r1);
         r1.setNotes(notes);
+
+        Ingredient ingredient = new Ingredient();
+        ingredient.setName("Avocado");
+        ingredient.setGrams(BigDecimal.valueOf(500));
+        r1.getIngredients().add(ingredient);
+        ingredient.setRecipe(r1);
 
         recipes.add(r1);
         return recipes;

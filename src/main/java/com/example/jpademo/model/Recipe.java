@@ -1,6 +1,7 @@
 package com.example.jpademo.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,10 +17,17 @@ public class Recipe {
     private Notes notes;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<Ingredient> ingredients;
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     public Recipe() {
+    }
 
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public Long getId() {
