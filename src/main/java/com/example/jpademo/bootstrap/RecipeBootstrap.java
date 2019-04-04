@@ -1,8 +1,6 @@
 package com.example.jpademo.bootstrap;
 
-import com.example.jpademo.model.Ingredient;
-import com.example.jpademo.model.Notes;
-import com.example.jpademo.model.Recipe;
+import com.example.jpademo.model.*;
 import com.example.jpademo.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -23,6 +21,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         List<Recipe> recipes = new ArrayList<>();
         Recipe r1 = new Recipe();
         r1.setDescription("Perfect Guacamole");
+
         Notes notes = new Notes();
         notes.setNotes("Avocado, hvidløg, citron, spidskommen, creme-freche, slat, peber, tomatskal");
         notes.setRecipe(r1);
@@ -33,6 +32,17 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         ingredient.setGrams(BigDecimal.valueOf(500));
         r1.getIngredients().add(ingredient);
         ingredient.setRecipe(r1);
+
+        Category category1 = new Category();
+        category1.setCategoryName("Mexican");
+        category1.getRecipes().add(r1);
+        r1.getCategories().add(category1);
+
+        UnitOfMeasure unitOfMeasure = new UnitOfMeasure();
+        unitOfMeasure.setUom("kg");
+        unitOfMeasure.setIngredient(ingredient);
+        ingredient.setUnitOfMeasure(unitOfMeasure);
+
 
         recipes.add(r1);
         return recipes;
