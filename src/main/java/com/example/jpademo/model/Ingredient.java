@@ -13,7 +13,7 @@ public class Ingredient {
     private BigDecimal grams;
 
     @ManyToOne
-    private  Recipe recipe;
+    private Recipe recipe;
 
     @OneToOne(cascade = CascadeType.ALL)
     private UnitOfMeasure unitOfMeasure;

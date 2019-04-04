@@ -1,5 +1,6 @@
 package com.example.jpademo.controller;
 
+import com.example.jpademo.model.Difficulty;
 import com.example.jpademo.model.Recipe;
 import com.example.jpademo.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class HomeController {
 
     @GetMapping("/")
     public String Home(){
+
+        System.out.println(Difficulty.AreYouNuts);
         Optional<Recipe> recipe = recipeRepository.findByDescription("Perfect Guacamole");
         if (recipe.isPresent()){
             System.out.println("fandt: " +recipe.get().getDescription());
